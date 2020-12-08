@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Mission to Mars</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
+
+</head>
+
+<body class="text-white" style="background-image: url(https://images.foxtv.com/static.fox5dc.com/www.fox5dc.com/content/uploads/2020/07/764/432/Mars-illustration.jpg?ve=1&tl=1);
+    background-size: cover; background-position: center">
+
+    <div class="container"> 
+
+        <!-- header -->
+        <div class="jumbotron text-center" style="background-image: url(https://www.sciencenewsforstudents.org/wp-content/uploads/2019/11/860_main_Marscolony.gif); background-size: 50%; height: 100%;">
+            <h1 class="display-4">Mission to Mars</h1>
+            <a class="btn btn-lg text-white" style="background-color:#3498DB" href="/scrape" role="button">Scrape New Data</a>
+        </div>
+
+        <!-- Latest Mars News -->
+        <div class="container">
+            <h3>Latest Mars News</h3>
+            <h5 style="color: white">{{ mars_data.Mars_News_Title}}</h5>
+            <p>{{ mars_data.Mars_News_Paragraph}}</p>
+        </div>
+
+        <div class="container">
+            <div class="row">
+
+                <!-- Featured Mars Image -->
+                <div class="col-lg-8 col-md-8 col-sm-12">
+                    <h3>Featured Mars Image</h3>
+                    <img src="{{ mars_data.Mars_Featured_Image}}" style="max-width:100%; max-height: auto;" alt="Mars Featured Image">
+                </div>
+
+                    <!-- Mars Facts Table -->
+                    <div class="col-lg-4 col-md-8 com-sm-12">
+                    <h3>Mars Facts</h3>
+                    <div style="max-width: 900px; max-height: 200px; font-size: 18px; margin-bottom: 20px;"> {{mars_data.Mars_Facts|safe}}</div>
+                    </div>
+                </div> 
+            </div>
+        </div>
+
+        <!-- Mars Hemispheres -->
+        <h3 style="padding-top: 50px; margin-top: 60px; text-align: center;">Mars Hemispheres</h3>
+        <div class="card-deck">
+            <hr>
+            <div class="col-md-10">
+                <div class="row">
+                    {% for image in mars_data.Mars_Hemispheres %}
+                    <div class="col-md-5">
+                        <div class="card text-white bg-dark" style="margin: 25px;">
+                            <img class="card-img-top" src="{{ image.img_url }}" />
+                            <div class="card-body">
+                                <p class="card-text">{{ image.title }}</p>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+
+
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+            crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
+
+</body>
+
+</html>
